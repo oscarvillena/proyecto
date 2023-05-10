@@ -1,0 +1,100 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat+Alternates);
+  
+*{
+  margin:0;
+  padding:0;
+  
+  font-family:'Montserrat Alternates', sans-serif;
+}
+body{
+  background:#ccc;
+}
+.menu{
+  background:#ccffcc;
+  padding:10px;
+}
+.menu h1{
+  display:inline;
+  margin-left:90px;
+  
+  font-weight: 400;
+  font-style:italic;
+}
+.menu ul{
+  display:inline;
+  margin-left:30px;
+}
+.menu ul > li{
+  display:inline;
+  margin:5px;
+  font-size:15pt;
+  font-style:none;
+}
+.link-menu{
+  text-decoration:none;
+  color:black;
+}
+.link-menu:hover{
+  color:blue;
+}
+.content{
+  background: #ccc;
+  padding-top:5px;
+}
+.destaque-prod{
+  background:white;
+  
+  display:block;
+  float:left;
+  
+  width:900px;
+  padding:5px;
+  padding-bottom:10px;
+  margin:3px auto;
+  border-radius:3px;
+}
+.destaque-prod > div {
+  background-color: #fff;
+  box-shadow: 1px 1px 10px #c6c6c6;
+  
+  display: inline-block;
+  
+  width:292px;
+  height:250px;
+  margin:3px;
+}
+.destaque-prod h2{
+  text-align:center;
+  margin:10px;
+  padding-bottom:15px;  
+}
+.category{
+  background:white;
+  box-shadow: 1px 1px 10px #c6c6c6;
+  border-radius:3px;
+  
+  display: block;
+  float:left;
+  
+  margin:3px;
+  margin-left:90px;
+  margin-right:10px;
+  
+  width:250px;
+}
+.category h3{
+  text-align:center;
+  box-shadow: 1px 1px 3px #ccc;
+}
+.category ul{
+  list-style:none;
+  padding:10px; 
+}
+.category ul li{
+   margin:5px;
+}
+.category ul li:hover{  
+  color:#66f; 
+  transition:1s;
+  background:#ccc;
+}
