@@ -30,9 +30,9 @@
     <div class="destaque-prod">
     <?php 
 $username = "root"; 
-$password = "root"; 
+$password = "ASf1*7JOSEM"; 
 $database = "taller_augusta"; 
-$mysqli = new mysqli("localhost", $username, $password, $database); 
+$mysqli = new mysqli("localhost", $username, $password, $database);
 $query = "SELECT * FROM facturas";
 
 
