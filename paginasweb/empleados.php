@@ -28,8 +28,36 @@
     <a href="#">Añadir Empleado</a>
 </div>
     <div class="destaque-prod">
-      <!-- Produtos -->
-      <h2>TABLA Empleado</h2>
+    <?php 
+$username = "root"; 
+$password = "root"; 
+$database = "taller_augusta"; 
+$mysqli = new mysqli("localhost", $username, $password, $database); 
+$query = "SELECT * FROM empleado";
+
+
+echo '<table border="1" cellspacing="1" cellpadding="1"> 
+      <tr> 
+          <td> <font face="Arial">Cod_Em</font> </td> 
+          <td> <font face="Arial">Apellidos</font> </td> 
+          <td> <font face="Arial">Nombre</font> </td> 
+      </tr>';
+
+if ($result = $mysqli->query($query)) {
+    while ($row = $result->fetch_assoc()) {
+        $field1name = $row["Cod_Em"];
+        $field2name = $row["Apellidos"];
+        $field3name = $row["Nombre"]; 
+
+        echo '<tr> 
+                  <td>'.$field1name.'</td> 
+                  <td>'.$field2name.'</td> 
+                  <td>'.$field3name.'</td> 
+              </tr>';
+    }
+    $result->free();
+} 
+?>
     </div>    
   </section>
   <footer class="footer">

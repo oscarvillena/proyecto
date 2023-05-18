@@ -28,8 +28,33 @@
     <a href="#">Añadir Servicio</a>
 </div>
     <div class="destaque-prod">
-      <!-- Produtos -->
-      <h2>TABLA Servicio</h2>
+    <?php 
+$username = "root"; 
+$password = "root"; 
+$database = "taller_augusta"; 
+$mysqli = new mysqli("localhost", $username, $password, $database); 
+$query = "SELECT * FROM servicios";
+
+
+echo '<table border="1" cellspacing="1" cellpadding="1"> 
+      <tr> 
+          <td> <font face="Arial">IdServicio</font> </td> 
+          <td> <font face="Arial">Reparacion</font> </td>  
+      </tr>';
+
+if ($result = $mysqli->query($query)) {
+    while ($row = $result->fetch_assoc()) {
+        $field1name = $row["IdServicio"];
+        $field2name = $row["Reparacion"];
+
+        echo '<tr> 
+                  <td>'.$field1name.'</td> 
+                  <td>'.$field2name.'</td> 
+              </tr>';
+    }
+    $result->free();
+} 
+?>
     </div>    
   </section>
   <footer class="footer">

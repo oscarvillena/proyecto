@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../css/cliente.css">
 </head>
 <body>
+
   <!-- -->
   <header class="menuheader">
     <ul>
@@ -29,11 +30,45 @@
     <a href="#">Citas Cliente</a>
 </div>
     <div class="destaque-prod">
-      <!-- Produtos -->
-      <h2>TABLA CLIENTE</h2>
-    </div>    
+    <?php 
+$username = "root"; 
+$password = "root"; 
+$database = "taller_augusta"; 
+$mysqli = new mysqli("localhost:3306", $username, $password, $database); 
+$query = "SELECT * FROM cliente";
+
+
+echo '<table border="1" cellspacing="1" cellpadding="1" style="max-width: 500px;"> 
+      <tr> 
+          <td> <font face="Arial">Cod_Cl</font> </td> 
+          <td> <font face="Arial">Descripcion</font> </td> 
+          <td> <font face="Arial">Direccion</font> </td> 
+          <td> <font face="Arial">Apellidos</font> </td> 
+          <td> <font face="Arial">Telefono</font> </td> 
+      </tr>';
+
+
+if ($result = $mysqli->query($query)) {
+    while ($row = $result->fetch_assoc()) {
+        $field1name = $row["Cod_Cl"];
+        $field2name = $row["Descripcion"];
+        $field3name = $row["Direccion"];
+        $field4name = $row["Apellidos"];
+        $field5name = $row["Telefono"]; 
+
+        echo '<tr> 
+                  <td>'.$field1name.'</td> 
+                  <td>'.$field2name.'</td> 
+                  <td>'.$field3name.'</td> 
+                  <td>'.$field4name.'</td> 
+                  <td>'.$field5name.'</td> 
+              </tr>';
+    }
+    $result->free();
+} 
+?>
+    </div>
   </section>
   <footer class="footer">
-    
-  </footer>
+  </footer>    
 </body>

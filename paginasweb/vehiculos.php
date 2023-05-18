@@ -28,8 +28,48 @@
     <a href="#">Añadir Vehiculo</a>
 </div>
     <div class="destaque-prod">
-      <!-- Produtos -->
-      <h2>TABLA Vehiculos</h2>
+    <?php 
+$username = "root"; 
+$password = "root"; 
+$database = "taller_augusta"; 
+$mysqli = new mysqli("localhost", $username, $password, $database); 
+$query = "SELECT * FROM vehiculo";
+
+
+echo '<table border="1" cellspacing="1" cellpadding="1"> 
+      <tr> 
+          <td> <font face="Arial">Modelo</font> </td> 
+          <td> <font face="Arial">Orden</font> </td> 
+          <td> <font face="Arial">Marca</font> </td> 
+          <td> <font face="Arial">Color</font> </td> 
+          <td> <font face="Arial">Cod_Em</font> </td>
+          <td> <font face="Arial">Cod_Cl</font> </td> 
+          <td> <font face="Arial">Tipo_Vehiculo</font> </td> 
+      </tr>';
+
+if ($result = $mysqli->query($query)) {
+    while ($row = $result->fetch_assoc()) {
+        $field1name = $row["Modelo"];
+        $field2name = $row["Orden"];
+        $field3name = $row["Marca"];
+        $field4name = $row["Color"];
+        $field5name = $row["Cod_Em"];
+        $field6name = $row["Cod_Cl"]; 
+        $field7name = $row["Tipo_Vehiculo"];  
+
+        echo '<tr> 
+                  <td>'.$field1name.'</td> 
+                  <td>'.$field2name.'</td> 
+                  <td>'.$field3name.'</td> 
+                  <td>'.$field4name.'</td> 
+                  <td>'.$field5name.'</td>
+                  <td>'.$field6name.'</td>
+                  <td>'.$field7name.'</td>
+              </tr>';
+    }
+    $result->free();
+} 
+?>
     </div>    
   </section>
   <footer class="footer">
