@@ -1,28 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <!--
-   -Criar um site de "vendas" basico
-   -com pagina principal, produtos, cadastro e contatos.
-  -->
-  <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-  <link rel="stylesheet" href="../css/login.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+ 
+  <style>
+    body, html {
+      height: 100%;
+    }
+  </style>
+  <title>Página básica con Bootstrap 5</title>
   
 </head>
-<body>
-  <!-- -->
-  <header class="menu">
-    <ul>
-      <li><a class="link-menu" href="paginaprincipal.php">Inicio</a></li>      
-    </ul>
+<body class="vh-100">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="paginaprincipal.php">Inicio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
   </header>
-  <div class="wrapper">
-    <form class="form-signin">       
-      <h2 class="form-signin-heading">Iniciar</h2>
-      <input type="text" class="form-control" name="username" placeholder="Empleado" required="" autofocus="" />
-      <input type="password" class="form-control" name="password" placeholder="Cod_Em" required=""/>      
-      <p><button class="btn btn-lg btn-primary btn-block" type="submit">Login</button></p> 
-    </form>
+<hr>
+  <main class="container min-vw-100">
+    <div class="row mt-4">
+      <div class="col">
+        <div class="p-4 bg-light text-center">
+        <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <h3>Solo Empleados</h3>
+        <hr>
+        <div class="card">
+          <div class="card-body">
+            <h1 class="text-center mb-4">Iniciar Sesión</h1>
+            <img src="../imagenes/logo.png" alt="Bienvenido" class="img-fluid">
+            <form method="POST" action="login.php">
+              <div class="mb-3">
+                <label for="email" class="form-label">Empleado</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa tu correo electrónico">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña">
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <footer class="footer">
-    
+
+  <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+
+      // Aquí puedes agregar tu lógica de verificación de inicio de sesión con PHP
+
+      // Ejemplo de verificación simple
+      if ($email === 'usuario@example.com' && $password === '123456') {
+        echo '<div class="alert alert-success mt-3">Inicio de sesión exitoso</div>';
+      } else {
+        echo '<div class="alert alert-danger mt-3">Credenciales incorrectas</div>';
+      }
+    }
+  ?>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </main>
+
+  <footer class="bg-dark text-light py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <p>Derechos de autor &copy; 2023 Mi Sitio. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html>
