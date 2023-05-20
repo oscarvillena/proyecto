@@ -4,30 +4,29 @@
    -com pagina principal, produtos, cadastro e contatos.
   -->
   <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/cliente.css">
 </head>
 <body>
 
   <!-- -->
   <header class="menuheader">
-    <ul>
-      <li><a class="link-menu" href="#">Iniciar Sesion</a></li>      
-    </ul>
+      <a class="button-primary" href="#">Iniciar Sesion</a>   
   </header>
   <div class="lateral">
-<ul class="menuVert">
-<li><a href="empleados.php">Empleados</a></li>
-<li><a href="facturas.php">Facturas</a></li>
-<li><a href="servicios.php">Servicios</a></li>
-<li><a href="vehiculos.php">Vehiculos</a></li>
-</ul>
+    <div class="btn-group-vertical">
+  <a href="empleados.php" class="btn btn-drak btn-block" role="button">Empleados</a>
+  <a href="facturas.php" class="btn btn-drak btn-block" role="button">Facturas</a>
+  <a href="servicios.php" class="btn btn-drak btn-block" role="button">Servicios</a>
+  <a href="vehiculos.php" class="btn btn-drak btn-block" role="button">Vehiculos</a>
+</div>
 </div>
   <section class="content">
     <aside class="category">
     </aside>
     <div class="rectangulo">
-    <a href="#">Añadir Cliente</a>
-    <a href="#">Citas Cliente</a>
+    <a href="#" class="button-secondary">Añadir Cliente</a>
 </div>
     <div class="destaque-prod">
     <?php 

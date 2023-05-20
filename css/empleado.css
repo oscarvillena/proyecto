@@ -2,164 +2,72 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
   
-*{
-  margin:0;
-  padding:0;
-  
-  font-family:'Montserrat Alternates', sans-serif;
-}
-body{
-  background:#bdbcbc;
-}
-.footer {
-  background:#ff0000;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-}
-.menuheader{
-  background:#ff0000;
-  padding:10px;
-}
-.menuheader h1{
-  display:inline;
-  margin-left:90px;
-  
-  font-weight: 400;
-  font-style:italic;
-}
-.menuheader ul{
-  display:inline;
-  margin-left:30px;
-}
-.menuheader ul > li{
-  display:inline;
-  margin:5px;
-  font-size:15pt;
-  font-style:none;
-  margin-left:1650px;
-  font-weight: bold;
-}
-.link-menuheader{
-  text-decoration:none;
-  color:black;
-}
-.link-menuheader:hover{
-  color:blue;
-}
-.content{
-  background: #bdbcbc;
-  padding-top:180px;
-  
-}
-.destaque-prod{
-  background:white;
-  
-  display:block;
-  float:center;
-  width:1000px;
-  padding:5px;
-  padding-bottom:10px;
-  margin:3px auto;
-  border-radius:3px;
-}
-.destaque-prod > div {
-  background-color: #fff;
-  box-shadow: 1px 1px 10px #ffffff;
-  
-  display: inline-block;
-  
-  width:292px;
-  height:250px;
-  margin:3px;
-}
-.destaque-prod h2{
-  text-align:center;
-  margin:10px;
-  padding-bottom:15px;  
-}
-.category{
-  background:white;
-  box-shadow: 1px 1px 10px #ffffff;
-  border-radius:3px;
-  
-  display: block;
-  float:left;
-  
-  margin:3px;
-  margin-left:90px;
-  margin-right:10px;
-  
-  width:250px;
-}
-.category h3{
-  text-align:center;
-  box-shadow: 1px 1px 3px #ffffff;
-}
-.category ul{
-  list-style:none;
-  padding:10px; 
-}
-.category ul li{
-   margin:5px;
-}
-.category ul li:hover{  
-  color:#66f; 
-  transition:1s;
-  background:#ffffff;
-}
-img.logo{
-  width: 200px;
-  height: 200px;
-  display: block; 
-  margin: 0 auto; 
+body {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "sidebar content content"
+    "footer footer footer";
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr 3fr 1fr;
+  min-height: 100vh;
 }
 
-.lateral{
-  height: 1000px;
-  background: #ff0000;
-  box-sizing: border-box;
-  width: max(8%, 200px);
-  display: inline-block;
-  position: fixed; padding-top: 30px
-  }
-  .lateral ul{
-    list-style:none;
-    padding-left:0;
-    margin-top:0;
-    }
-    .lateral ul li{
-    display:block;
-    position: relative;
-    padding: 8px 10px;
-    margin-left:0;
-    border-bottom:1px solid black;
-    }
-    .lateral ul li a{
-    color: black;
-    text-decoration:none;
-    }
-    .lateral ul li a:after{
-    content: ' ';
-    position:absolute;
-    width: 100%;
-    height: 100%;
-    top:0;
-    left:0;
-    }
-    .lateral ul li:hover, .lateral ul li:hover a{
-    background: black;
-    color: white;
-    }
-    .rectangulo{
-      background:white;
-      
-      display:block;
-      float:center;
-      width:1000px;
-      padding:5px;
-      padding-bottom:10px;
-      margin:3px auto;
-      border-radius:3px;
-    }
+.menuheader {
+  grid-area: header;
+  background: #343a40;
+  padding: 10px;
+}
+
+.lateral {
+  grid-area: sidebar;
+  background: #343a40;
+  padding-top: 30px;
+}
+
+.content {
+  grid-area: content;
+  background: #f8f9fa;
+  padding: 10px;
+  overflow: auto; /* Agrega esta línea */
+}
+
+
+
+.footer {
+  grid-area: footer;
+  background: #343a40;
+}
+.button-primary {
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  background: #0e0e0e;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content; /* Ajusta el ancho al contenido */
+  margin: 5px; /* Agrega un margen entre los botones */
+}
+.button-secondary {
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  background: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content; /* Ajusta el ancho al contenido */
+  margin: 5px; /* Agrega un margen entre los botones */
+}
+
+/**			<div class="side-menu-container">
+				<ul class="nav navbar-nav">
+
+					<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+					<li class="active"><a href="#"><i class="fa fa-puzzle-piece"></i> Components</a></li>
+					<li><a href="#"><i class="fa fa-heart"></i> Extras</a></li>**/

@@ -11,7 +11,7 @@
   <!-- -->
   <header class="menu">
     <ul>
-      <li><a class="link-menu" href="#">Inicio</a></li>      
+      <li><a class="link-menu" href="paginaprincipal.php">Inicio</a></li>      
     </ul>
   </header>
   <div class="wrapper">
