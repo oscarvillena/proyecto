@@ -25,56 +25,80 @@
       </div>
     </nav>
   </header>
-<hr>
+  <hr>
   <main class="container min-vw-100">
     <div class="row mt-4">
       <div class="col">
         <div class="p-4 bg-light text-center">
-        <div class="container">
-    <div class="row justify-content-center mt-5">
-      <div class="col-md-6">
-        <h3>Solo Empleados</h3>
-        <hr>
-        <div class="card">
-          <div class="card-body">
-            <h1 class="text-center mb-4">Iniciar Sesión</h1>
-            <img src="../imagenes/logo.png" alt="Bienvenido" class="img-fluid">
-            <form method="POST" action="login.php">
-              <div class="mb-3">
-                <label for="email" class="form-label">Empleado</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa tu correo electrónico">
+          <div class="container">
+            <div class="row justify-content-center mt-5">
+              <div class="col-md-6">
+                <h3>Solo Empleados</h3>
+                <hr>
+                <div class="card">
+                  <div class="card-body">
+                    <h1 class="text-center mb-4">Iniciar Sesión</h1>
+                    <img src="../imagenes/logo.png" alt="Bienvenido" class="img-fluid">
+                    <form method="POST" action="login.php">
+                      <div class="mb-3">
+                        <label for="email" class="form-label">Codigo Empleado</label>
+                        <input type="text" class="form-control" id="cod_em" name="cod_em" placeholder="Ingresa tu código de empleado">
+                      </div>
+                      <div class="mb-3">
+                        <label for="password" class="form-label">Nombre</label>
+                        <input type="password" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+                      </div>
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                      </div>
+                    </form>
+                    <?php
+session_start();
+
+if (isset($_SESSION['cod_em']) && isset($_SESSION['nombre'])) {
+  header("Location: clientes.php");
+  exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $cod_em = $_POST['cod_em'];
+  $nombre = $_POST['nombre'];
+
+  $username = "root";
+  $password = "ASf1*7JOSEM";
+  $database = "taller_augusta";
+  $mysqli = new mysqli("localhost", $username, $password, $database);
+
+  if ($mysqli->connect_error) {
+    die("Error de conexión: " . $mysqli->connect_error);
+  }
+
+  $query = "SELECT Cod_Em, Nombre FROM empleado WHERE Cod_Em = '$cod_em' AND Nombre = '$nombre'";
+  $result = $mysqli->query($query);
+
+  if ($result->num_rows === 1) {
+    $row = $result->fetch_assoc();
+    $cod_em = $row['Cod_Em'];
+    $nombre = $row['Nombre'];
+
+    $_SESSION['cod_em'] = $cod_em;
+    $_SESSION['nombre'] = $nombre;
+
+    header("Location: clientes.php");
+    exit();
+  } else {
+    echo '<div class="alert alert-danger mt-3">Credenciales incorrectas</div>';
+  }
+
+  $mysqli->close();
+}
+?>
+
+
+                  </div>
+                </div>
               </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña">
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      $email = $_POST['email'];
-      $password = $_POST['password'];
-
-      // Aquí puedes agregar tu lógica de verificación de inicio de sesión con PHP
-
-      // Ejemplo de verificación simple
-      if ($email === 'usuario@example.com' && $password === '123456') {
-        echo '<div class="alert alert-success mt-3">Inicio de sesión exitoso</div>';
-      } else {
-        echo '<div class="alert alert-danger mt-3">Credenciales incorrectas</div>';
-      }
-    }
-  ?>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+            </div>
           </div>
         </div>
       </div>

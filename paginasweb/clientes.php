@@ -12,7 +12,12 @@
 
   <!-- -->
   <header class="menuheader">
-      <a class="button-primary" href="#">Iniciar Sesion</a>   
+      <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" style="display: inline;">
+  <input type="hidden" name="logout">
+  <button type="submit" class="button-primary">Cerrar Sesión</button>
+</form>
+
+ 
   </header>
   <div class="lateral">
     <div class="btn-group-vertical">
@@ -66,6 +71,17 @@ if ($result = $mysqli->query($query)) {
     $result->free();
 } 
 ?>
+<?php
+session_start();
+
+if (isset($_POST['logout'])) {
+  session_unset();
+  header("Location: paginaprincipal.php");
+  exit();
+}
+?>
+
+
     </div>
   </section>
   <footer class="footer">
