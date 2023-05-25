@@ -152,7 +152,7 @@
         header("Location: ".$_SERVER['PHP_SELF']);
       }
       ?>
-
+      <hr>
       <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <input type="text" name="codCl_eliminar" placeholder="Código del Cliente a Eliminar" required>
         <button type="submit" class="button-primary">Eliminar Cliente</button>
