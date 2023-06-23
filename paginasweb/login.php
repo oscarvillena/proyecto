@@ -11,7 +11,7 @@
       height: 100%;
     }
   </style>
-  <title>Página básica con Bootstrap 5</title>
+  <title>Inicio Sesión</title>
   
 </head>
 <body class="vh-100">

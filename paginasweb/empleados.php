@@ -12,7 +12,7 @@
       height: 100%;
     }
   </style>
-  <title>Página</title>
+  <title>Empleados</title>
 </head>
 <body>
   <header class="menuheader">

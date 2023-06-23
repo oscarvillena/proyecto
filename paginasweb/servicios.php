@@ -12,7 +12,7 @@
       height: 100%;
     }
   </style>
-  <title>Página</title>
+  <title>Servicios</title>
 </head>
 <body>
   <header class="menuheader">
@@ -26,7 +26,7 @@
     <div class="btn-group-vertical">
       <a href="clientes.php" class="btn btn-drak btn-block" role="button">Clientes</a>
       <a href="facturas.php" class="btn btn-drak btn-block" role="button">Facturas</a>
-      <a href="servicios.php" class="btn btn-drak btn-block" role="button">Empleados</a>
+      <a href="empleados.php" class="btn btn-drak btn-block" role="button">Empleados</a>
       <a href="vehiculos.php" class="btn btn-drak btn-block" role="button">Vehiculos</a>
     </div>
   </div>

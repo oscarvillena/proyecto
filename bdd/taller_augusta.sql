@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 23-05-2023 a las 15:43:51
+-- Tiempo de generación: 13-06-2023 a las 18:13:40
 -- Versión del servidor: 8.0.33-0ubuntu0.22.04.2
 -- Versión de PHP: 8.1.2-1ubuntu2.11
 
@@ -24,12 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `Citas`
+--
+
+CREATE TABLE `Citas` (
+  `fecha` varchar(255) DEFAULT NULL,
+  `hora` varchar(255) DEFAULT NULL,
+  `nombre_cliente` varchar(50) DEFAULT NULL,
+  `apellidos_cliente` varchar(50) DEFAULT NULL,
+  `telefono` varchar(20) NOT NULL,
+  `tipo_vehiculo` varchar(100) DEFAULT NULL,
+  `Direccion` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `cliente`
 --
 
 CREATE TABLE `cliente` (
   `Cod_Cl` int NOT NULL,
-  `Descripcion` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Direccion` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Apellidos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Telefono` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL
@@ -39,30 +55,12 @@ CREATE TABLE `cliente` (
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`Cod_Cl`, `Descripcion`, `Direccion`, `Apellidos`, `Telefono`) VALUES
+INSERT INTO `cliente` (`Cod_Cl`, `Nombre`, `Direccion`, `Apellidos`, `Telefono`) VALUES
 (1, 'Oscar', 'Calle 1, Ciudad A', 'Villena Camino', '111-111-1111'),
 (2, 'Iván', 'Calle 2, Ciudad B', 'Mosteo González', '222-222-2222'),
-(3, 'Álvaro', 'Calle 3, Ciudad C', 'Llorens García', '333-333-3333');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `coches`
---
-
-CREATE TABLE `coches` (
-  `Matricula` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-  `N_Bastidor` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `Tipo_Vehiculo` varchar(20) COLLATE utf8mb4_general_ci DEFAULT 'Coche',
-  `Cod_Vehiculo` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `coches`
---
-
-INSERT INTO `coches` (`Matricula`, `N_Bastidor`, `Tipo_Vehiculo`, `Cod_Vehiculo`) VALUES
-('1234ABC', 'A12345', 'Coche', '1234ABC');
+(3, 'Álvaro', 'Calle 3, Ciudad C', 'Llorens García', '333-333-3333'),
+(4, 'Juan', 'Calle 4, Ciudad D ', 'Almeida Rodriguez', '444-444-4444'),
+(5, 'Jose', 'Calle 6, Ciudad f', 'Martinez Soria', '555-555-5555');
 
 -- --------------------------------------------------------
 
@@ -83,7 +81,8 @@ CREATE TABLE `empleado` (
 INSERT INTO `empleado` (`Cod_Em`, `Apellidos`, `Nombre`) VALUES
 (1, 'Rovira Martínez', 'Sergio'),
 (2, 'Sánchez Romea', 'Juan'),
-(3, 'Vargas Frances', 'Eduardo');
+(3, 'Vargas Frances', 'Eduardo'),
+(4, 'Garcia Ibañez', 'Andrea');
 
 -- --------------------------------------------------------
 
@@ -113,46 +112,6 @@ INSERT INTO `facturas` (`IdFactura`, `Fecha`, `Estado`, `Cod_Cl`, `IdServicio`) 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `furgonetas`
---
-
-CREATE TABLE `furgonetas` (
-  `Matricula` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-  `N_Bastidor` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `Tipo_Vehiculo` varchar(20) COLLATE utf8mb4_general_ci DEFAULT 'Furgoneta',
-  `Cod_Vehiculo` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `furgonetas`
---
-
-INSERT INTO `furgonetas` (`Matricula`, `N_Bastidor`, `Tipo_Vehiculo`, `Cod_Vehiculo`) VALUES
-('5678DEF', 'C24680', 'Furgoneta', '5678DEF');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `motos`
---
-
-CREATE TABLE `motos` (
-  `Matricula` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-  `N_Bastidor` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `Tipo_Vehiculo` varchar(20) COLLATE utf8mb4_general_ci DEFAULT 'Moto',
-  `Cod_Vehiculo` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `motos`
---
-
-INSERT INTO `motos` (`Matricula`, `N_Bastidor`, `Tipo_Vehiculo`, `Cod_Vehiculo`) VALUES
-('9012GHI', 'E86420', 'Moto', '9012GHI');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `servicios`
 --
 
@@ -177,7 +136,7 @@ INSERT INTO `servicios` (`IdServicio`, `Reparacion`) VALUES
 --
 
 CREATE TABLE `vehiculo` (
-  `Matricula` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Matricula` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
   `Modelo` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Orden` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Marca` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -192,26 +151,25 @@ CREATE TABLE `vehiculo` (
 --
 
 INSERT INTO `vehiculo` (`Matricula`, `Modelo`, `Orden`, `Marca`, `Color`, `Cod_Em`, `Cod_Cl`, `Tipo_Vehiculo`) VALUES
-('1234ABC', 'Berlina', '01', 'Seat', 'Rojo', 1, 1, 'Coche'),
-('5678DEF', 'Vito', '02', 'Mercedes', 'Blanco', 2, 2, 'Furgoneta'),
-('9012GHI', 'Suzuki', '03', 'Suzuki', 'Azul', 3, 3, 'Moto');
+('7894MGH', 'Accord', '02', 'Honda', 'Verde', 2, 2, 'Coche'),
+('8596MGP', 'Mondeo', '01', 'Ford', 'Azul', 1, 1, 'Coche'),
+('8968JOF', 'Mondeo', '05', 'Ford', 'Celeste', 1, 3, 'Furgoneta');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `Citas`
+--
+ALTER TABLE `Citas`
+  ADD PRIMARY KEY (`telefono`);
+
+--
 -- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`Cod_Cl`);
-
---
--- Indices de la tabla `coches`
---
-ALTER TABLE `coches`
-  ADD PRIMARY KEY (`Matricula`),
-  ADD KEY `Tipo_Vehiculo` (`Tipo_Vehiculo`);
 
 --
 -- Indices de la tabla `empleado`
@@ -228,20 +186,6 @@ ALTER TABLE `facturas`
   ADD KEY `IdServicio` (`IdServicio`);
 
 --
--- Indices de la tabla `furgonetas`
---
-ALTER TABLE `furgonetas`
-  ADD PRIMARY KEY (`Matricula`),
-  ADD KEY `Tipo_Vehiculo` (`Tipo_Vehiculo`);
-
---
--- Indices de la tabla `motos`
---
-ALTER TABLE `motos`
-  ADD PRIMARY KEY (`Matricula`),
-  ADD KEY `Tipo_Vehiculo` (`Tipo_Vehiculo`);
-
---
 -- Indices de la tabla `servicios`
 --
 ALTER TABLE `servicios`
@@ -251,7 +195,7 @@ ALTER TABLE `servicios`
 -- Indices de la tabla `vehiculo`
 --
 ALTER TABLE `vehiculo`
-  ADD PRIMARY KEY (`Tipo_Vehiculo`),
+  ADD PRIMARY KEY (`Matricula`),
   ADD KEY `Cod_Em` (`Cod_Em`),
   ADD KEY `Cod_Cl` (`Cod_Cl`);
 
@@ -260,29 +204,11 @@ ALTER TABLE `vehiculo`
 --
 
 --
--- Filtros para la tabla `coches`
---
-ALTER TABLE `coches`
-  ADD CONSTRAINT `coches_ibfk_1` FOREIGN KEY (`Tipo_Vehiculo`) REFERENCES `vehiculo` (`Tipo_Vehiculo`);
-
---
 -- Filtros para la tabla `facturas`
 --
 ALTER TABLE `facturas`
   ADD CONSTRAINT `facturas_ibfk_1` FOREIGN KEY (`Cod_Cl`) REFERENCES `cliente` (`Cod_Cl`),
   ADD CONSTRAINT `facturas_ibfk_2` FOREIGN KEY (`IdServicio`) REFERENCES `servicios` (`IdServicio`);
-
---
--- Filtros para la tabla `furgonetas`
---
-ALTER TABLE `furgonetas`
-  ADD CONSTRAINT `furgonetas_ibfk_1` FOREIGN KEY (`Tipo_Vehiculo`) REFERENCES `vehiculo` (`Tipo_Vehiculo`);
-
---
--- Filtros para la tabla `motos`
---
-ALTER TABLE `motos`
-  ADD CONSTRAINT `motos_ibfk_1` FOREIGN KEY (`Tipo_Vehiculo`) REFERENCES `vehiculo` (`Tipo_Vehiculo`);
 
 --
 -- Filtros para la tabla `vehiculo`

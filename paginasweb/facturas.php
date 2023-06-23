@@ -12,7 +12,7 @@
       height: 100%;
     }
   </style>
-  <title>Página</title>
+  <title>Facturas</title>
 </head>
 <body>
   <header class="menuheader">
@@ -39,6 +39,8 @@
     </div>
     <div class="destaque-prod">
       <?php 
+      
+      
       $username = "root"; 
       $password = "ASf1*7JOSEM"; 
       $database = "taller_augusta"; 
@@ -155,7 +157,7 @@
       <hr>
       <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <input type="text" name="codFa_eliminar" placeholder="Código de la Factura a Eliminar" required>
-        <button type="submit" class="button-primary">Eliminar Factura</button>
+        <button type="submit" class="button-primary">Eliminar Facturas</button>
       </form>
     </div>
   </section>
